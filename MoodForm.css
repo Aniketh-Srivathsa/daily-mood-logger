@@ -1,0 +1,26 @@
+.emoji-picker {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .emoji-btn {
+    font-size: 1.8rem;
+    padding: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: #eee;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .emoji-btn:hover {
+    transform: scale(1.2);
+  }
+  
+  .emoji-btn.active {
+    background-color: #007bff;
+    color: white;
+    transform: scale(1.2);
+  }
+  
