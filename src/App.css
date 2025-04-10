@@ -1,23 +1,16 @@
+:root {
+  --x: 50%;
+  --y: 50%;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at var(--x) var(--y), #222 0%, #111 40%, #000 80%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   color: #fff;
-  background: radial-gradient(
-    circle at center,
-    #1a1a1a 0%,
-    #111111 40%,
-    #0a0a0a 70%,
-    #000000 100%
-  );
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  transition: background 0.2s ease;
 }
 
 .app {
@@ -25,10 +18,9 @@ body {
   min-height: 100vh;
 }
 
-/* Sidebar */
 .sidebar {
   width: 220px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   border-right: 1px solid #333;
   padding: 20px;
   display: flex;
@@ -44,19 +36,15 @@ body {
   cursor: pointer;
 }
 
-.sidebar h2:hover {
-  color: #fff;
-}
-
 .sidebar button {
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.08);
   border: none;
   border-radius: 5px;
+  color: #ccc;
+  font-weight: 600;
   cursor: pointer;
   text-align: left;
-  font-weight: 600;
-  color: #ddd;
   transition: background-color 0.2s ease;
 }
 
@@ -74,7 +62,6 @@ body {
   padding: 40px;
 }
 
-/* Form and Mood UI */
 form {
   display: flex;
   flex-direction: column;
@@ -116,8 +103,8 @@ input {
 
 .emoji-btn:hover,
 .emoji-btn.active {
-  background-color: #007bff;
   transform: scale(1.2);
+  background-color: #007bff;
 }
 
 button.save-btn {
@@ -128,7 +115,6 @@ button.save-btn {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  width: fit-content;
 }
 
 button.save-btn:hover {
@@ -140,9 +126,8 @@ button.save-btn:hover {
 }
 
 .mood-history h3 {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
   color: #66ccff;
+  margin-bottom: 15px;
 }
 
 .mood-entry {
