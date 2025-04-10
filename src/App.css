@@ -1,13 +1,9 @@
-:root {
-  --x: 50%;
-  --y: 50%;
-}
-
+/* Spotlight Cursor Background */
 body {
   background: radial-gradient(
     circle at var(--x, 50%) var(--y, 50%),
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.05) 25%,
+    rgba(160, 190, 230, 0.25) 0%,
+    rgba(160, 190, 230, 0.05) 25%,
     #000000 55%
   );
   background-repeat: no-repeat;
@@ -17,15 +13,15 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
 .app {
   display: flex;
   min-height: 100vh;
 }
 
+/* Sidebar */
 .sidebar {
   width: 220px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   border-right: 1px solid #333;
   padding: 20px;
   display: flex;
@@ -38,7 +34,6 @@ body {
   font-size: 1.4rem;
   margin-bottom: 1rem;
   color: #66ccff;
-  cursor: pointer;
 }
 
 .sidebar button {
@@ -46,10 +41,10 @@ body {
   background-color: rgba(255, 255, 255, 0.08);
   border: none;
   border-radius: 5px;
-  color: #ccc;
-  font-weight: 600;
   cursor: pointer;
   text-align: left;
+  font-weight: 600;
+  color: #ddd;
   transition: background-color 0.2s ease;
 }
 
@@ -62,11 +57,21 @@ body {
   color: white;
 }
 
+.logo {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.logo:hover {
+  color: #ffffff;
+}
+
 .content {
   flex: 1;
   padding: 40px;
 }
 
+/* Mood Form */
 form {
   display: flex;
   flex-direction: column;
@@ -106,10 +111,13 @@ input {
   transition: transform 0.2s ease;
 }
 
-.emoji-btn:hover,
-.emoji-btn.active {
+.emoji-btn:hover {
   transform: scale(1.2);
+}
+
+.emoji-btn.active {
   background-color: #007bff;
+  transform: scale(1.2);
 }
 
 button.save-btn {
@@ -120,19 +128,22 @@ button.save-btn {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  width: fit-content;
 }
 
 button.save-btn:hover {
   background-color: #0056b3;
 }
 
+/* Mood History */
 .mood-history {
   max-width: 500px;
 }
 
 .mood-history h3 {
-  color: #66ccff;
+  font-size: 1.3rem;
   margin-bottom: 15px;
+  color: #66ccff;
 }
 
 .mood-entry {
