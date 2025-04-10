@@ -13,17 +13,19 @@ function App() {
   const [currentTab, setCurrentTab] = useState('log');
   const [showLanding, setShowLanding] = useState(true);
 
+  // Load existing mood logs
   useEffect(() => {
     const saved = localStorage.getItem('moodLogs');
     if (saved) setLogs(JSON.parse(saved));
   }, []);
 
+  // Dynamic cursor background
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
       const y = (e.clientY / window.innerHeight) * 100;
       document.body.style.setProperty('--x', `${x}%`);
-      document.body.style.setProperty('--y`, `${y}%`);
+      document.body.style.setProperty('--y', `${y}%`);
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
@@ -47,6 +49,7 @@ function App() {
     toast.success('Mood saved successfully!');
   };
 
+  // Show landing page first
   if (showLanding) {
     return (
       <div className="app">
