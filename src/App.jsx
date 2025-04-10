@@ -11,35 +11,23 @@ function App() {
   const [note, setNote] = useState('');
   const [logs, setLogs] = useState([]);
   const [currentTab, setCurrentTab] = useState('log');
-  const [darkMode, setDarkMode] = useState(false);
   const [showLanding, setShowLanding] = useState(true);
 
-  // Load saved moods
   useEffect(() => {
     const saved = localStorage.getItem('moodLogs');
     if (saved) setLogs(JSON.parse(saved));
   }, []);
 
-  // Set background movement with cursor
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
       const y = (e.clientY / window.innerHeight) * 100;
       document.body.style.setProperty('--x', `${x}%`);
-      document.body.style.setProperty('--y', `${y}%`);
+      document.body.style.setProperty('--y`, `${y}%`);
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-
-  // Toggle theme on <body>
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-    }
-  }, [darkMode]);
 
   const handleSave = () => {
     if (!selectedMood) {
@@ -56,14 +44,12 @@ function App() {
 
     setSelectedMood('');
     setNote('');
-
     toast.success('Mood saved successfully!');
   };
 
-  // Show landing screen first
   if (showLanding) {
     return (
-      <div className={`app ${darkMode ? 'dark' : ''}`}>
+      <div className="app">
         <LandingPage
           onSelect={(tab) => {
             setCurrentTab(tab);
@@ -75,7 +61,7 @@ function App() {
   }
 
   return (
-    <div className={`app ${darkMode ? 'dark' : ''}`}>
+    <div className="app">
       <div className="sidebar">
         <h2>Mood Logger</h2>
         <button
@@ -89,9 +75,6 @@ function App() {
           className={currentTab === 'history' ? 'active' : ''}
         >
           Mood History
-        </button>
-        <button onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
         </button>
       </div>
 
