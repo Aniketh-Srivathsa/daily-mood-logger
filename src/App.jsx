@@ -18,7 +18,6 @@ function App() {
     if (saved) setLogs(JSON.parse(saved));
   }, []);
 
-  // Spotlight effect based on cursor
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth) * 100;

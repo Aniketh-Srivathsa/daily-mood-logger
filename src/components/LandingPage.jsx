@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './LandingPage.css';
 
 function LandingPage({ onSelect }) {
-  // ✅ Cursor spotlight effect
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
