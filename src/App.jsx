@@ -18,13 +18,28 @@ function App() {
     if (saved) setLogs(JSON.parse(saved));
   }, []);
 
+  // Spotlight + cursor trail
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      document.body.style.setProperty('--x', `${x}%`);
-      document.body.style.setProperty('--y', `${y}%`);
+      const x = e.clientX;
+      const y = e.clientY;
+
+      const xPercent = (x / window.innerWidth) * 100;
+      const yPercent = (y / window.innerHeight) * 100;
+      document.body.style.setProperty('--x', `${xPercent}%`);
+      document.body.style.setProperty('--y', `${yPercent}%`);
+
+      const dot = document.createElement('div');
+      dot.className = 'trail-dot';
+      dot.style.left = `${x}px`;
+      dot.style.top = `${y}px`;
+      document.body.appendChild(dot);
+
+      setTimeout(() => {
+        dot.remove();
+      }, 600);
     };
+
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
