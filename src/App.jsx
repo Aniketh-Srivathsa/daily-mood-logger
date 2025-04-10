@@ -18,17 +18,6 @@ function App() {
     if (saved) setLogs(JSON.parse(saved));
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      document.body.style.setProperty('--x', `${x}%`);
-      document.body.style.setProperty('--y', `${y}%`);
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   const handleSave = () => {
     if (!selectedMood) {
       toast.error('Please select a mood!');
@@ -37,8 +26,8 @@ function App() {
 
     const today = new Date().toLocaleDateString();
     const newLog = { date: today, mood: selectedMood, note };
-
     const updatedLogs = [newLog, ...logs];
+
     setLogs(updatedLogs);
     localStorage.setItem('moodLogs', JSON.stringify(updatedLogs));
 
@@ -64,7 +53,7 @@ function App() {
     <div className="app">
       <div className="sidebar">
         <h2 className="logo" onClick={() => setShowLanding(true)}>
-          SnowMood
+          Mood loggerr
         </h2>
         <button
           onClick={() => setCurrentTab('log')}
