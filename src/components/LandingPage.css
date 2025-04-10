@@ -1,7 +1,7 @@
 .landing {
     height: 100vh;
-    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), #1a1a1a, #121212);
-    color: #eee;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), #ffffff, #f0f0f0);
+    color: #222;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,13 +14,13 @@
   .landing h1 {
     font-size: 2.8rem;
     margin-bottom: 1rem;
-    color: #66ccff;
+    color: #007bff;
   }
   
   .landing p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: #ccc;
+    color: #555;
   }
   
   .landing-buttons {

@@ -13,13 +13,12 @@ function App() {
   const [currentTab, setCurrentTab] = useState('log');
   const [showLanding, setShowLanding] = useState(true);
 
-  // Load existing mood logs
   useEffect(() => {
     const saved = localStorage.getItem('moodLogs');
     if (saved) setLogs(JSON.parse(saved));
   }, []);
 
-  // Dynamic cursor background
+  // Cursor-based dynamic background
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
@@ -49,7 +48,6 @@ function App() {
     toast.success('Mood saved successfully!');
   };
 
-  // Show landing page first
   if (showLanding) {
     return (
       <div className="app">
@@ -66,7 +64,7 @@ function App() {
   return (
     <div className="app">
       <div className="sidebar">
-        <h2>Mood Logger</h2>
+        <h2>SnowMood</h2>
         <button
           onClick={() => setCurrentTab('log')}
           className={currentTab === 'log' ? 'active' : ''}
