@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './LandingPage.css';
 
 function LandingPage({ onSelect }) {
+  // ✅ Cursor spotlight effect
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
@@ -15,7 +16,7 @@ function LandingPage({ onSelect }) {
 
   return (
     <div className="landing">
-      <h1>Welcome to Daily Mood Logger</h1>
+      <h1>Welcome to SnowMood</h1>
       <p>Track how you're feeling. Every day matters. 🌙</p>
       <div className="landing-buttons">
         <button onClick={() => onSelect('log')}>Log Mood</button>

@@ -18,7 +18,7 @@ function App() {
     if (saved) setLogs(JSON.parse(saved));
   }, []);
 
-  // Cursor-based dynamic background
+  // Spotlight effect based on cursor
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
@@ -64,7 +64,9 @@ function App() {
   return (
     <div className="app">
       <div className="sidebar">
-        <h2>SnowMood</h2>
+        <h2 className="logo" onClick={() => setShowLanding(true)}>
+          SnowMood
+        </h2>
         <button
           onClick={() => setCurrentTab('log')}
           className={currentTab === 'log' ? 'active' : ''}
