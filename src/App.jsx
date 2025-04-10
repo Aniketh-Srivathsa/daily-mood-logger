@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MoodForm from './components/MoodForm';
 import MoodHistory from './components/MoodHistory';
+import LandingPage from './components/LandingPage';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -11,12 +12,15 @@ function App() {
   const [logs, setLogs] = useState([]);
   const [currentTab, setCurrentTab] = useState('log');
   const [darkMode, setDarkMode] = useState(false);
+  const [showLanding, setShowLanding] = useState(true);
 
+  // Load saved moods
   useEffect(() => {
     const saved = localStorage.getItem('moodLogs');
     if (saved) setLogs(JSON.parse(saved));
   }, []);
 
+  // Set background movement with cursor
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
@@ -24,10 +28,18 @@ function App() {
       document.body.style.setProperty('--x', `${x}%`);
       document.body.style.setProperty('--y', `${y}%`);
     };
-
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  // Toggle theme on <body>
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   const handleSave = () => {
     if (!selectedMood) {
@@ -48,14 +60,19 @@ function App() {
     toast.success('Mood saved successfully!');
   };
 
-  // Toggle theme class on <body>
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-    }
-  }, [darkMode]);
+  // Show landing screen first
+  if (showLanding) {
+    return (
+      <div className={`app ${darkMode ? 'dark' : ''}`}>
+        <LandingPage
+          onSelect={(tab) => {
+            setCurrentTab(tab);
+            setShowLanding(false);
+          }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={`app ${darkMode ? 'dark' : ''}`}>
