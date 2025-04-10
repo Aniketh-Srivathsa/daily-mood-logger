@@ -3,7 +3,7 @@ import MoodForm from './components/MoodForm';
 import MoodHistory from './components/MoodHistory';
 import LandingPage from './components/LandingPage';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.min.css';
 import './App.css';
 
 function App() {
