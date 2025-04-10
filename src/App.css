@@ -3,7 +3,7 @@ body {
   background: radial-gradient(
     circle at var(--x, 50%) var(--y, 50%),
     rgba(160, 190, 230, 0.1) 0%,
-    rgba(160, 190, 230, 0.1) 30%,
+    rgba(160, 190, 230, 0.8) 30%,
     #000000 60%
   );
   background-repeat: no-repeat;
