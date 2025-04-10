@@ -1,16 +1,15 @@
-/* Spotlight Cursor Background */
 body {
   background: radial-gradient(
     circle at var(--x, 50%) var(--y, 50%),
-    rgba(160, 190, 230, 0.1) 0%,
-    rgba(160, 190, 230, 0.8) 30%,
-    #000000 60%
+    rgba(180, 190, 200, 0.08) 0%,
+    rgba(180, 190, 200, 0.12) 15%,
+    #000000 45%
   );
-  background-repeat: no-repeat;
   background-size: 100% 100%;
-  transition: background 0.3s ease, color 0.3s ease;
+  background-repeat: no-repeat;
   color: #fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.3s ease;
 }
 
 .app {
@@ -21,7 +20,7 @@ body {
 /* Sidebar */
 .sidebar {
   width: 220px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.3);
   border-right: 1px solid #333;
   padding: 20px;
   display: flex;
@@ -34,6 +33,7 @@ body {
   font-size: 1.4rem;
   margin-bottom: 1rem;
   color: #66ccff;
+  cursor: pointer;
 }
 
 .sidebar button {
@@ -57,30 +57,18 @@ body {
   color: white;
 }
 
-.logo {
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.logo:hover {
-  color: #ffffff;
-}
-
 .content {
   flex: 1;
   padding: 40px;
+  background-color: transparent;
 }
 
-/* Mood Form */
+/* Mood Form & Inputs */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   max-width: 500px;
-}
-
-label {
-  font-weight: 600;
 }
 
 select,
