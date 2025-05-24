@@ -1,43 +1,215 @@
 .history {
-    padding: 1rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.history h2 {
+  margin-bottom: 1.5rem;
+  color: #00d2a1;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 210, 161, 0.3);
+  position: relative;
+  display: inline-block;
+}
+
+.history h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  height: 3px;
+  width: 60px;
+  background: linear-gradient(to right, #00d2a1, transparent);
+  border-radius: 3px;
+}
+
+.mood-logs-container {
+  position: relative;
+  padding-left: 25px;
+}
+
+/* Timeline line */
+.mood-logs-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #66ccff 0%, #00d2a1 100%);
+  border-radius: 3px;
+  opacity: 0.6;
+}
+
+.mood-log {
+  background: rgba(19, 33, 55, 0.65);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  position: relative;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(102, 204, 255, 0.1) inset;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+/* Timeline dot */
+.mood-log::before {
+  content: '';
+  position: absolute;
+  left: -25px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #0f1722;
+  border: 3px solid #66ccff;
+  box-shadow: 0 0 10px rgba(102, 204, 255, 0.5);
+  z-index: 1;
+}
+
+/* Mood color indicator on the left side */
+.mood-log::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--mood-color, #66ccff);
+  opacity: 0.8;
+}
+
+.mood-log:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(102, 204, 255, 0.2) inset;
+}
+
+/* Colored borders for different moods */
+.mood-log[data-mood="Happy"] {
+  --mood-color: #ffc107;
+}
+
+.mood-log[data-mood="Neutral"] {
+  --mood-color: #6c757d;
+}
+
+.mood-log[data-mood="Sad"] {
+  --mood-color: #007bff;
+}
+
+.mood-log[data-mood="Angry"] {
+  --mood-color: #dc3545;
+}
+
+.mood-log[data-mood="Excited"] {
+  --mood-color: #ff4081;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.mood {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Enhanced mood text visibility */
+.mood-text {
+  color: #66ccff; /* Default bright blue color */
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  margin-right: 5px;
+}
+
+/* Color-coded mood text for better visibility */
+.mood-log[data-mood="Happy"] .mood-text {
+  color: #ffd700; /* Gold */
+}
+
+.mood-log[data-mood="Neutral"] .mood-text {
+  color: #e0e0e0; /* Light gray */
+}
+
+.mood-log[data-mood="Sad"] .mood-text {
+  color: #87cefa; /* Light sky blue */
+}
+
+.mood-log[data-mood="Angry"] .mood-text {
+  color: #ff6b6b; /* Light red */
+}
+
+.mood-log[data-mood="Excited"] .mood-text {
+  color: #ff69b4; /* Hot pink */
+}
+
+.emoji {
+  margin-left: 8px;
+  font-size: 1.3rem;
+}
+
+.note {
+  margin: 0;
+  font-size: 1rem;
+  color: #e0e0e0;
+  line-height: 1.5;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Empty state styling */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(19, 33, 55, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.empty-state p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .history {
+    padding: 1.5rem;
   }
   
-  .history h2 {
-    margin-bottom: 1rem;
-    color: #444;
+  .mood-logs-container {
+    padding-left: 20px;
+  }
+  
+  .mood-log::before {
+    left: -22px;
+    width: 12px;
+    height: 12px;
   }
   
   .mood-log {
-    background: #f4f4f4;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-left: 5px solid #007bff;
-    border-radius: 4px;
+    padding: 1.2rem;
   }
   
-  .mood-log strong {
-    display: block;
+  .mood-text {
     font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: #333;
   }
   
-  .mood-log p {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #555;
+  .history h2 {
+    font-size: 1.8rem;
   }
-  
-  .dark .mood-log {
-    background-color: #2c2c2c;
-    border-color: #66ccff;
-  }
-  
-  .dark .mood-log strong {
-    color: #fff;
-  }
-  
-  .dark .mood-log p {
-    color: #ccc;
-  }
-  
+}

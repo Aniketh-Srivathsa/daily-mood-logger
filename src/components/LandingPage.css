@@ -1,45 +1,343 @@
 .landing {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 10vh;
+  padding-left: 5%; /* Changed from 10% to 5% to move card more to the left */
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  background: #0f1722;
+}
+
+/* Moving aurora background effect */
+.landing::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(125deg, rgba(26, 42, 108, 0.1), rgba(26, 42, 108, 0)),
+    linear-gradient(215deg, rgba(34, 111, 171, 0.1), rgba(34, 111, 171, 0)),
+    linear-gradient(245deg, rgba(13, 107, 163, 0.1), rgba(13, 107, 163, 0)),
+    linear-gradient(305deg, rgba(84, 158, 242, 0.1), rgba(84, 158, 242, 0));
+  background-size: 400% 400%;
+  animation: aurora 20s ease infinite;
+  z-index: 0;
+}
+
+@keyframes aurora {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+/* Floating particles effect */
+.landing::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at 20% 35%, rgba(76, 161, 255, 0.15) 0%, transparent 25%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Create floating star particles */
+.landing {
+  --star: radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+}
+
+.landing .stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.landing .stars span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--star);
+  border-radius: 50%;
+  animation: twinkle var(--duration) ease-in-out infinite;
+  opacity: var(--opacity);
+}
+
+.landing .stars span:nth-child(1) {
+  top: 10%;
+  left: 20%;
+  --duration: 7s;
+  --opacity: 0.6;
+}
+
+.landing .stars span:nth-child(2) {
+  top: 15%;
+  left: 60%;
+  --duration: 4s;
+  --opacity: 0.8;
+}
+
+.landing .stars span:nth-child(3) {
+  top: 25%;
+  left: 85%;
+  --duration: 6s;
+  --opacity: 0.7;
+}
+
+.landing .stars span:nth-child(4) {
+  top: 30%;
+  left: 40%;
+  --duration: 5s;
+  --opacity: 0.6;
+}
+
+.landing .stars span:nth-child(5) {
+  top: 50%;
+  left: 15%;
+  --duration: 8s;
+  --opacity: 0.5;
+}
+
+.landing .stars span:nth-child(6) {
+  top: 65%;
+  left: 75%;
+  --duration: 9s;
+  --opacity: 0.7;
+}
+
+.landing .stars span:nth-child(7) {
+  top: 80%;
+  left: 35%;
+  --duration: 7s;
+  --opacity: 0.6;
+}
+
+.landing .stars span:nth-child(8) {
+  top: 82%;
+  left: 80%;
+  --duration: 6s;
+  --opacity: 0.5;
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: scale(1); opacity: var(--opacity); }
+  50% { transform: scale(1.7); opacity: 0.2; }
+}
+
+/* Glassmorphism card effect for content - ENHANCED FOR VISIBILITY */
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+  background: rgba(19, 33, 55, 0.65); /* Increased opacity from 0.25 to 0.65 */
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(102, 204, 255, 0.2); /* Changed border color to be more visible */
+  padding: 2.5rem;
+  max-width: 600px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5), /* Darker shadow */
+    0 0 30px rgba(102, 204, 255, 0.15) inset, /* Added inner glow */
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  /* Added glow effect around the card */
+  animation: cardPulse 4s ease-in-out infinite;
+}
+
+/* Add animation for subtle card pulsing glow */
+@keyframes cardPulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 30px rgba(102, 204, 255, 0.15) inset, 0 0 0 1px rgba(255, 255, 255, 0.1) inset; }
+  50% { box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(102, 204, 255, 0.25) inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset; }
+}
+
+.landing h1 {
+  font-size: 3.8rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #66ccff, #3aa0ff, #a183ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  z-index: 1;
+  text-shadow: 0 2px 15px rgba(102, 204, 255, 0.3); /* Added text shadow for better visibility */
+}
+
+.landing h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 3px;
+  width: 60px;
+  background: linear-gradient(to right, #66ccff, #3aa0ff);
+  border-radius: 3px;
+}
+
+.landing p {
+  font-size: 1.4rem;
+  margin-bottom: 2.5rem;
+  color: #f0f0f0; /* Brightened from #e0e0e0 */
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.landing-buttons {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.landing-buttons button {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-buttons button:first-child {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  box-shadow: 
+    0 4px 15px rgba(0, 123, 255, 0.3),
+    0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.landing-buttons button:last-child {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+/* Animated glow effect on button hover */
+.landing-buttons button::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+  background: linear-gradient(90deg, #007bff, #00c6ff, #007bff);
+  background-size: 200%;
+  border-radius: 35px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.landing-buttons button:first-child:hover::before {
+  opacity: 1;
+  animation: animateGlow 2s linear infinite;
+}
+
+@keyframes animateGlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.landing-buttons button:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 123, 255, 0.4);
+}
+
+.landing-buttons button:first-child:hover {
+  box-shadow: 
+    0 12px 25px rgba(0, 123, 255, 0.4),
+    0 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+.landing-buttons button:last-child:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 12px 25px rgba(255, 255, 255, 0.1),
+    0 0 0 4px rgba(255, 255, 255, 0.05);
+}
+
+.landing-buttons button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Animated moon with orbit effect */
+.moon-container {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.moon {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 150, 0.8));
+  animation: moonPulse 8s ease-in-out infinite;
+}
+
+@keyframes moonPulse {
+  0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 8px rgba(255, 255, 150, 0.6)); }
+  50% { transform: translateY(-3px) scale(1.1); filter: drop-shadow(0 0 15px rgba(255, 255, 150, 0.8)); }
+}
+
+/* Add a small orbit particle around the moon */
+.moon-container::after {
+  content: '✦';
+  position: absolute;
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  top: 5px;
+  left: 13px;
+  animation: orbit 8s linear infinite;
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(10px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .landing {
+    padding-left: 20px;
+    padding-right: 20px;
     align-items: center;
-    text-align: center;
+  }
+  
+  .content-wrapper {
     padding: 2rem;
-    color: #fff;
-    background-color: transparent;
+    max-width: 90%;
   }
   
   .landing h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
-    color: #66ccff;
+    font-size: 3rem;
+    text-align: center;
   }
   
   .landing p {
     font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: #ddd;
+    text-align: center;
   }
   
   .landing-buttons {
-    display: flex;
-    gap: 20px;
+    flex-direction: column;
+    width: 100%;
   }
-  
-  .landing-buttons button {
-    padding: 12px 24px;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
-  }
-  
-  .landing-buttons button:hover {
-    background-color: #0056b3;
-  }
-  
+}
